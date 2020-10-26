@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from "react";
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from "react-router-dom";
+import Home from "./Home/Home.js";
+import Stuff from "./Stuff/Stuff.js";
+import Contact from "./Contact/Contact.js";
+import "./index.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <HashRouter>
+    <nav>
+    <ul className="header">
+    <input className ="menu-btn" type="checkbox" id="menu-btn" />
+    <label className="menu-icon" for="menu-btn"><span className="navicon"></span></label>
+      <li><NavLink to="/">Home</NavLink></li>
+      <li><NavLink to="/stuff">Stuff</NavLink></li>
+      <li><NavLink to="/contact">Contact</NavLink></li>
+    </ul>
+    <div className="content">
+        <Route exact path="/" component={Home}/>
+        <Route path="/stuff" component={Stuff}/>
+        <Route path="/contact" component={Contact}/>
     </div>
+    </nav>
+    </HashRouter>
   );
 }
 
